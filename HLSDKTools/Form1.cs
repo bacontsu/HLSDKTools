@@ -140,17 +140,20 @@ namespace HLSDKTools
                 {
                     tabPanel.Width = targetSize;
                     tabResize.Width = targetSize + 10;
+                    decTab.Left = targetSize + 10 + 6;
                 }
                 else if (targetSize >= 179)
                 {
                     tabPanel.Width = 179;
                     tabResize.Width = 189;
+                    decTab.Left = 195;
                     targetSize = 179;
                 }
                 else if (targetSize <= 0)
                 {
                     tabPanel.Width = 0;
                     tabResize.Width = 10;
+                    decTab.Left = 16;
                     targetSize = 0;
                 }
 
@@ -284,5 +287,34 @@ namespace HLSDKTools
             enableResizing = false;
         }
 
+        private void decButtonPath_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = @"/bin/",
+                Title = "Browse MDLDEC.exe Executeable",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "exe",
+                Filter = "exe files (*.exe)|*.exe",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                decBoxPath.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
