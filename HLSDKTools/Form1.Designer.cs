@@ -34,15 +34,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.title = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tabPanel = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tabResize = new System.Windows.Forms.Panel();
+            this.decTab = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.tabPanel.SuspendLayout();
+            this.tabResize.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeBtn
@@ -97,18 +100,23 @@
             this.logo.TabIndex = 1;
             this.logo.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // timer1
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(0, 43);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(179, 416);
-            this.panel2.TabIndex = 2;
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tabPanel
+            // 
+            this.tabPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.tabPanel.Controls.Add(this.button5);
+            this.tabPanel.Controls.Add(this.button4);
+            this.tabPanel.Controls.Add(this.button3);
+            this.tabPanel.Controls.Add(this.button2);
+            this.tabPanel.Controls.Add(this.button1);
+            this.tabPanel.Location = new System.Drawing.Point(1, 0);
+            this.tabPanel.Name = "tabPanel";
+            this.tabPanel.Size = new System.Drawing.Size(179, 416);
+            this.tabPanel.TabIndex = 2;
             // 
             // button5
             // 
@@ -200,10 +208,25 @@
             this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
-            // timer1
+            // tabResize
             // 
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.tabResize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.tabResize.Controls.Add(this.tabPanel);
+            this.tabResize.Location = new System.Drawing.Point(0, 43);
+            this.tabResize.Name = "tabResize";
+            this.tabResize.Size = new System.Drawing.Size(189, 416);
+            this.tabResize.TabIndex = 5;
+            this.tabResize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabResize_MouseDown);
+            this.tabResize.MouseEnter += new System.EventHandler(this.tabResize_MouseEnter);
+            this.tabResize.MouseLeave += new System.EventHandler(this.tabResize_MouseLeave);
+            this.tabResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabResize_MouseUp);
+            // 
+            // decTab
+            // 
+            this.decTab.Location = new System.Drawing.Point(195, 54);
+            this.decTab.Name = "decTab";
+            this.decTab.Size = new System.Drawing.Size(593, 384);
+            this.decTab.TabIndex = 6;
             // 
             // Form1
             // 
@@ -211,14 +234,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.decTab);
+            this.Controls.Add(this.tabResize);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.tabPanel.ResumeLayout(false);
+            this.tabResize.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -229,13 +254,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Button logo;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel tabPanel;
+        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel tabResize;
+        private System.Windows.Forms.Panel decTab;
     }
 }
 

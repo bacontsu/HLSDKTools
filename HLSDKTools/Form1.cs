@@ -24,7 +24,17 @@ namespace HLSDKTools
         int button3State;
         int button4State;
         int button5State;
-        
+
+        bool isResizing;
+        bool enableResizing;
+
+        // tabPanel
+        int[] originCoord = new int[2];
+        int[] currentCoord = new int[2];
+        int[] originalSize = new int[2];
+        int targetSize;
+
+        // content
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -47,6 +57,8 @@ namespace HLSDKTools
             button3Offset = button3State;
             button4Offset = button4State;
             button5Offset = button5State;
+
+            originalSize = new int[] { 179, tabPanel.Top };
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -104,6 +116,47 @@ namespace HLSDKTools
             button4.Padding = new Padding(button4State, 0, 0, 0);
             button5.Padding = new Padding(button5State, 0, 0, 0);
 
+            // resizing cursor
+            if(isResizing)
+                Cursor.Current = Cursors.SizeWE;
+            else Cursor.Current = Cursors.Default;
+
+            // handle resizing code
+            if(enableResizing)
+            {
+                // update coord
+                currentCoord = new int[] { Cursor.Position.X, Cursor.Position.Y };
+
+                // calculate difference
+                int[] dist = new int[2];
+
+                dist[0] = currentCoord[0] - originCoord[0];
+                dist[1] = currentCoord[1] - originCoord[1];
+
+                targetSize = originalSize[0] + dist[0];
+
+                // some clamps
+                if (targetSize < 179 && targetSize >= 0)
+                {
+                    tabPanel.Width = targetSize;
+                    tabResize.Width = targetSize + 10;
+                }
+                else if (targetSize >= 179)
+                {
+                    tabPanel.Width = 179;
+                    tabResize.Width = 189;
+                    targetSize = 179;
+                }
+                else if (targetSize <= 0)
+                {
+                    tabPanel.Width = 0;
+                    tabResize.Width = 10;
+                    targetSize = 0;
+                }
+
+                //label1.Text = "current mouse coord" + currentCoord[0] + " original mouse coord" + originCoord[0] + " last tab size" + originalSize[0]; 
+
+            }
         }
 
         private void button1_MouseEnter(object sender, EventArgs e)
@@ -205,5 +258,31 @@ namespace HLSDKTools
             button4.BackColor = Color.FromArgb(90, 90, 90);
             button1.BackColor = Color.FromArgb(90, 90, 90);
         }
+
+        private void tabResize_MouseEnter(object sender, EventArgs e)
+        {
+            //Cursor.Current = Cursors.SizeWE;
+            isResizing = true;
+        }
+
+        private void tabResize_MouseLeave(object sender, EventArgs e)
+        {
+            //Cursor.Current = Cursors.Default;
+            isResizing = false;
+        }
+
+        private void tabResize_MouseDown(object sender, MouseEventArgs e)
+        {
+            originCoord = new int[] { Cursor.Position.X, Cursor.Position.Y };
+            //originalSize = new int[] { tabPanel.Left, tabPanel.Top };
+            enableResizing = true;
+        }
+
+        private void tabResize_MouseUp(object sender, MouseEventArgs e)
+        {
+            originalSize[0] = targetSize;
+            enableResizing = false;
+        }
+
     }
 }
