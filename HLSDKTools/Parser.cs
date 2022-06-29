@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace HLSDKTools
 {
-    public class Parser
+    public partial class Parser
     {
+        // ===================================================================================
+        // ExtractToken - Extract settings from the config file
+        // ===================================================================================
         public static string ExtractToken(string token, string[] fileContent)
         {
             if (!string.IsNullOrEmpty(token) && fileContent != null)
@@ -16,20 +19,27 @@ namespace HLSDKTools
                 {
                     if (line.StartsWith(token))
                     {
-                        string processed1 = line.Replace(token, "");
-                        processed1 = processed1.Replace('"', ' ');
-                        processed1 = processed1.Replace(" ", "");
-                        processed1 = processed1.Replace("%20", " ");
-
-                        return processed1;
+                        return line.Remove(0, token.Length + 1);
                     }
-                    else return null;
+                    else continue;
                 }
                 return null;
-
             }
             else
             return null;
+        }
+
+        // ===================================================================================
+        // SaveToken - Save settings from the config file
+        // ===================================================================================
+        public static string SaveToken(string token, string path)
+        {
+            if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(path))
+            {
+                return token + " " + path;
+            }
+            else
+                return null;
         }
 
     }

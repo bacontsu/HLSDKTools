@@ -40,6 +40,10 @@ namespace HLSDKTools
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr one, int two, int three, int four);
+
+        // ===================================================================================
+        // Application Init function
+        // ===================================================================================
         public Form1()
         {
             InitializeComponent();
@@ -59,6 +63,8 @@ namespace HLSDKTools
             button5Offset = button5State;
 
             originalSize = new int[] { 179, tabPanel.Top };
+
+            Settings.InitSetting();
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -89,6 +95,9 @@ namespace HLSDKTools
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // apply settings
+            decBoxPath.Text = Settings.MDLDecPath;
+
             // handle button1
             if (button1Offset > button1State) button1State++;
             else if (button1Offset < button1State) button1State--;
@@ -308,7 +317,7 @@ namespace HLSDKTools
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                decBoxPath.Text = openFileDialog1.FileName;
+                Settings.MDLDecPath = openFileDialog1.FileName;
             }
         }
 
