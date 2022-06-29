@@ -34,7 +34,7 @@ namespace HLSDKTools
         // ===================================================================================
         public static string SaveToken(string token, string path)
         {
-            if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(path))
+            if (!string.IsNullOrEmpty(token))
             {
                 return token + " " + path;
             }

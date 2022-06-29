@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.IO;
 
 namespace HLSDKTools
 {
@@ -35,6 +37,7 @@ namespace HLSDKTools
         int targetSize;
 
         // content
+        int selectedTab;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -97,6 +100,23 @@ namespace HLSDKTools
         {
             // apply settings
             decBoxPath.Text = Settings.MDLDecPath;
+            decOutBoxPath.Text = Settings.modelOutput;
+            decInBoxPath.Text = Settings.modelInput;
+
+            // show only selected panel
+            switch (selectedTab)
+            {
+                case 0:
+                    {
+                        decTab.Show();
+                        break;
+                    }
+                default:
+                    {
+                        decTab.Hide();
+                        break;
+                    }
+            }
 
             // handle button1
             if (button1Offset > button1State) button1State++;
@@ -229,6 +249,8 @@ namespace HLSDKTools
             button3.BackColor = Color.FromArgb(90, 90, 90);
             button4.BackColor = Color.FromArgb(90, 90, 90);
             button5.BackColor = Color.FromArgb(90, 90, 90);
+
+            selectedTab = 0;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -239,6 +261,8 @@ namespace HLSDKTools
             button3.BackColor = Color.FromArgb(90, 90, 90);
             button4.BackColor = Color.FromArgb(90, 90, 90);
             button5.BackColor = Color.FromArgb(90, 90, 90);
+
+            selectedTab = 1;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -249,6 +273,8 @@ namespace HLSDKTools
             button1.BackColor = Color.FromArgb(90, 90, 90);
             button4.BackColor = Color.FromArgb(90, 90, 90);
             button5.BackColor = Color.FromArgb(90, 90, 90);
+
+            selectedTab = 2;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -259,6 +285,8 @@ namespace HLSDKTools
             button3.BackColor = Color.FromArgb(90, 90, 90);
             button1.BackColor = Color.FromArgb(90, 90, 90);
             button5.BackColor = Color.FromArgb(90, 90, 90);
+
+            selectedTab = 3;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -269,6 +297,8 @@ namespace HLSDKTools
             button3.BackColor = Color.FromArgb(90, 90, 90);
             button4.BackColor = Color.FromArgb(90, 90, 90);
             button1.BackColor = Color.FromArgb(90, 90, 90);
+
+            selectedTab = 4;
         }
 
         private void tabResize_MouseEnter(object sender, EventArgs e)
@@ -308,11 +338,7 @@ namespace HLSDKTools
 
                 DefaultExt = "exe",
                 Filter = "exe files (*.exe)|*.exe",
-                FilterIndex = 2,
-                RestoreDirectory = true,
-
-                ReadOnlyChecked = true,
-                ShowReadOnly = true
+              
             };
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -323,7 +349,84 @@ namespace HLSDKTools
 
         private void button8_Click(object sender, EventArgs e)
         {
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = Settings.MDLDecPath,
+                    Arguments = '"' + Settings.modelInput + '"' + " " + '"' + Settings.modelOutput + '"',
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
 
+            proc.Start();
+            while (!proc.StandardOutput.EndOfStream)
+            {
+                string standard_output;
+                while ((standard_output = proc.StandardOutput.ReadLine()) != null)
+                {
+                    decOutputBox.Text += standard_output + '\n';
+                }
+            }
+        }
+
+        private void decBoxPath_TextChanged(object sender, EventArgs e)
+        {
+            Settings.SaveSetting();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = "D:/",
+                Title = "Browse output folder",
+
+                CheckFileExists = false,
+                CheckPathExists = true,
+                ValidateNames = false,
+
+                FileName = "Folder Selection.",
+
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Settings.modelOutput = openFileDialog1.FileName.Remove(openFileDialog1.FileName.Length - 17);
+            }
+        }
+
+        private void displayModelBtn_Click(object sender, EventArgs e)
+        {
+
+            Process.Start(Settings.HLAMPath, '"' + Settings.modelInput + '"');
+        }
+
+        private void decBrowseModelBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = "D:/",
+                Title = "Browse model (.mdl) file",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "mdl",
+                Filter = "mdl files (*.mdl)|*.mdl",
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Settings.modelInput = openFileDialog1.FileName;
+            }
+        }
+
+        private void decOutBoxPath_TextChanged(object sender, EventArgs e)
+        {
+            Settings.SaveSetting();
         }
     }
 }

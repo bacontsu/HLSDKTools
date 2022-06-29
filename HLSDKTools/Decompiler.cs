@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HLSDKTools
 {
-    public class Decompiler
+    public partial class Decompiler
     {
         public static void Decompile(string path, string args)
         {
