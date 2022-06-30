@@ -15,3 +15,5 @@ HLSDKTools/bin/Debug/HLSDKTools.pdb
 HLSDKTools/bin/Debug/HLSDKTools.exe.config
 HLSDKTools/bin/Debug/HLSDKTools.exe
 .vs/HLSDKTools/v17/.suo
+*.vsidx
+*.lock

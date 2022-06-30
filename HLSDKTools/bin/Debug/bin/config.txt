@@ -3,7 +3,7 @@ mdldec D:\c#shit\HLSDKTools\HLSDKTools\bin\Debug\bin\mdldec\mdldec.exe
 studiomdl D:\c#shit\HLSDKTools\HLSDKTools\bin\Debug\bin\studiomdl\studiomdl.exe
 wadmaker D:\c#shit\HLSDKTools\HLSDKTools\bin\Debug\bin\wadmaker\WadMaker.exe
 spritemaker D:\c#shit\HLSDKTools\HLSDKTools\bin\Debug\bin\wadmaker\SpriteMaker.exe
-outputfolder D:\goldsource model\tes2
+outputfolder D:\goldsource model\flare
 
 
 

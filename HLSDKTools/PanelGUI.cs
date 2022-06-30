@@ -13,7 +13,7 @@ using System.IO;
 
 namespace HLSDKTools
 {
-    public partial class Form1 : Form
+    public partial class PanelGUI : Form
     {
         int button1Offset;
         int button2Offset;
@@ -39,6 +39,12 @@ namespace HLSDKTools
         // content
         int selectedTab;
 
+        // accessible panels - Decompiler Page
+        //public static string DecExecutablePath;
+        //public static string DecModelInputFile;
+        //public static string DecModelOutputFolder;
+        public static string DecConsoleOutput;
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -47,7 +53,7 @@ namespace HLSDKTools
         // ===================================================================================
         // Application Init function
         // ===================================================================================
-        public Form1()
+        public PanelGUI()
         {
             InitializeComponent();
             timer1.Start();
@@ -102,6 +108,13 @@ namespace HLSDKTools
             decBoxPath.Text = Settings.MDLDecPath;
             decOutBoxPath.Text = Settings.modelOutput;
             decInBoxPath.Text = Settings.modelInput;
+
+            // update panels only when different
+            //decBoxPath.Text = DecExecutablePath;
+            //decInBoxPath.Text = DecModelInputFile;
+            //decOutBoxPath.Text = DecModelOutputFolder;
+            if(decOutputBox.Text != DecConsoleOutput)
+                decOutputBox.Text = DecConsoleOutput;
 
             // show only selected panel
             switch (selectedTab)
@@ -328,48 +341,12 @@ namespace HLSDKTools
 
         private void decButtonPath_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog
-            {
-                InitialDirectory = @"/bin/",
-                Title = "Browse MDLDEC.exe Executeable",
-
-                CheckFileExists = true,
-                CheckPathExists = true,
-
-                DefaultExt = "exe",
-                Filter = "exe files (*.exe)|*.exe",
-              
-            };
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                Settings.MDLDecPath = openFileDialog1.FileName;
-            }
+            Decompiler.SelectExecutable();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            var proc = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = Settings.MDLDecPath,
-                    Arguments = '"' + Settings.modelInput + '"' + " " + '"' + Settings.modelOutput + '"',
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
-                }
-            };
-
-            proc.Start();
-            while (!proc.StandardOutput.EndOfStream)
-            {
-                string standard_output;
-                while ((standard_output = proc.StandardOutput.ReadLine()) != null)
-                {
-                    decOutputBox.Text += standard_output + '\n';
-                }
-            }
+            Decompiler.StartDecompile();
         }
 
         private void decBoxPath_TextChanged(object sender, EventArgs e)
@@ -379,49 +356,18 @@ namespace HLSDKTools
 
         private void button7_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog
-            {
-                InitialDirectory = "D:/",
-                Title = "Browse output folder",
-
-                CheckFileExists = false,
-                CheckPathExists = true,
-                ValidateNames = false,
-
-                FileName = "Folder Selection.",
-
-            };
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                Settings.modelOutput = openFileDialog1.FileName.Remove(openFileDialog1.FileName.Length - 17);
-            }
+            Decompiler.SelectOutputFolder();
         }
 
         private void displayModelBtn_Click(object sender, EventArgs e)
         {
-
+            // open preferred model viewer
             Process.Start(Settings.HLAMPath, '"' + Settings.modelInput + '"');
         }
 
         private void decBrowseModelBtn_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog
-            {
-                InitialDirectory = "D:/",
-                Title = "Browse model (.mdl) file",
-
-                CheckFileExists = true,
-                CheckPathExists = true,
-
-                DefaultExt = "mdl",
-                Filter = "mdl files (*.mdl)|*.mdl",
-            };
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                Settings.modelInput = openFileDialog1.FileName;
-            }
+            Decompiler.SelectModelFile();
         }
 
         private void decOutBoxPath_TextChanged(object sender, EventArgs e)
