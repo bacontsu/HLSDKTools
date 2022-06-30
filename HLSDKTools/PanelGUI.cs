@@ -72,6 +72,7 @@ namespace HLSDKTools
             button5Offset = button5State;
 
             originalSize = new int[] { 179, tabPanel.Top };
+            this.Size = new Size(800,450);
 
             Settings.InitSetting();
         }
@@ -116,17 +117,29 @@ namespace HLSDKTools
             if(decOutputBox.Text != DecConsoleOutput)
                 decOutputBox.Text = DecConsoleOutput;
 
+            studioTab.Location = decTab.Location;
+
             // show only selected panel
             switch (selectedTab)
             {
                 case 0:
                     {
                         decTab.Show();
+                        //decTab.BringToFront();
+                        studioTab.Hide();
+                        break;
+                    }
+                case 1:
+                    {
+                        studioTab.Show();
+                        //studioTab.BringToFront();
+                        decTab.Hide();
                         break;
                     }
                 default:
                     {
-                        decTab.Hide();
+                       // studioTab.Hide();
+                        //decTab.Hide();
                         break;
                     }
             }
