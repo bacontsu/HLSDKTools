@@ -118,6 +118,7 @@ namespace HLSDKTools
                 decOutputBox.Text = DecConsoleOutput;
 
             studioTab.Location = decTab.Location;
+            wadTab.Location = decTab.Location;
 
             // show only selected panel
             switch (selectedTab)
@@ -127,6 +128,7 @@ namespace HLSDKTools
                         decTab.Show();
                         //decTab.BringToFront();
                         studioTab.Hide();
+                        wadTab.Hide();
                         break;
                     }
                 case 1:
@@ -134,6 +136,14 @@ namespace HLSDKTools
                         studioTab.Show();
                         //studioTab.BringToFront();
                         decTab.Hide();
+                        wadTab.Hide();
+                        break;
+                    }
+                case 2:
+                    {
+                        wadTab.Show();
+                        decTab.Hide();
+                        studioTab.Hide();
                         break;
                     }
                 default:
