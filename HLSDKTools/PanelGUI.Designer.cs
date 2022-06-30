@@ -93,7 +93,11 @@
             this.button10 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.wadTab = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -109,8 +113,25 @@
             this.label14 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.spriteTab = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.button18 = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabPanel.SuspendLayout();
             this.tabResize.SuspendLayout();
@@ -129,6 +150,11 @@
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.spriteTab.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeBtn
@@ -527,15 +553,15 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(551, 165);
+            this.label11.Location = new System.Drawing.Point(496, 164);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(11, 13);
+            this.label11.Size = new System.Drawing.Size(53, 13);
             this.label11.TabIndex = 30;
-            this.label11.Text = "°";
+            this.label11.Text = "° (degree)";
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(502, 162);
+            this.numericUpDown2.Location = new System.Drawing.Point(446, 162);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(46, 20);
             this.numericUpDown2.TabIndex = 29;
@@ -832,6 +858,8 @@
             // 
             // wadTab
             // 
+            this.wadTab.Controls.Add(this.label18);
+            this.wadTab.Controls.Add(this.label17);
             this.wadTab.Controls.Add(this.label16);
             this.wadTab.Controls.Add(this.panel5);
             this.wadTab.Controls.Add(this.listBox1);
@@ -851,6 +879,36 @@
             this.wadTab.Size = new System.Drawing.Size(593, 384);
             this.wadTab.TabIndex = 15;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.LightCoral;
+            this.label18.Location = new System.Drawing.Point(423, 348);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(157, 13);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "Texture is greater than 512x512";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.LightCoral;
+            this.label17.Location = new System.Drawing.Point(423, 335);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(50, 13);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "Warning!";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(23, 162);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 13);
+            this.label16.TabIndex = 16;
+            this.label16.Text = "Texture List:";
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
@@ -859,6 +917,14 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(150, 150);
             this.panel5.TabIndex = 15;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel12.Location = new System.Drawing.Point(5, 5);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(140, 140);
+            this.panel12.TabIndex = 16;
             // 
             // listBox1
             // 
@@ -874,14 +940,14 @@
             "Image5"});
             this.listBox1.Location = new System.Drawing.Point(25, 179);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(275, 143);
+            this.listBox1.Size = new System.Drawing.Size(298, 143);
             this.listBox1.TabIndex = 14;
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.panel9.Controls.Add(this.textBox4);
-            this.panel9.Location = new System.Drawing.Point(179, 76);
+            this.panel9.Location = new System.Drawing.Point(179, 105);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(293, 23);
             this.panel9.TabIndex = 13;
@@ -900,7 +966,7 @@
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.panel10.Controls.Add(this.textBox5);
-            this.panel10.Location = new System.Drawing.Point(179, 47);
+            this.panel10.Location = new System.Drawing.Point(179, 76);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(293, 23);
             this.panel10.TabIndex = 13;
@@ -919,7 +985,7 @@
             // 
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.panel11.Controls.Add(this.textBox6);
-            this.panel11.Location = new System.Drawing.Point(179, 18);
+            this.panel11.Location = new System.Drawing.Point(179, 47);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(293, 23);
             this.panel11.TabIndex = 12;
@@ -946,7 +1012,7 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(249, 346);
+            this.button12.Location = new System.Drawing.Point(25, 330);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(103, 31);
             this.button12.TabIndex = 9;
@@ -955,7 +1021,7 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(478, 75);
+            this.button13.Location = new System.Drawing.Point(478, 104);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(93, 23);
             this.button13.TabIndex = 8;
@@ -966,7 +1032,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(22, 77);
+            this.label13.Location = new System.Drawing.Point(22, 106);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(113, 13);
             this.label13.TabIndex = 7;
@@ -974,7 +1040,7 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(478, 47);
+            this.button14.Location = new System.Drawing.Point(478, 76);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(93, 23);
             this.button14.TabIndex = 5;
@@ -985,7 +1051,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(22, 51);
+            this.label14.Location = new System.Drawing.Point(22, 80);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(105, 13);
             this.label14.TabIndex = 4;
@@ -993,7 +1059,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(478, 18);
+            this.button15.Location = new System.Drawing.Point(478, 47);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(93, 23);
             this.button15.TabIndex = 2;
@@ -1004,36 +1070,210 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(22, 23);
+            this.label15.Location = new System.Drawing.Point(22, 52);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(87, 13);
             this.label15.TabIndex = 1;
             this.label15.Text = "Wadmaker Path:";
             // 
-            // label16
+            // spriteTab
             // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(23, 162);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 13);
-            this.label16.TabIndex = 16;
-            this.label16.Text = "Texture List:";
+            this.spriteTab.Controls.Add(this.label19);
+            this.spriteTab.Controls.Add(this.label20);
+            this.spriteTab.Controls.Add(this.panel14);
+            this.spriteTab.Controls.Add(this.panel16);
+            this.spriteTab.Controls.Add(this.panel17);
+            this.spriteTab.Controls.Add(this.panel18);
+            this.spriteTab.Controls.Add(this.label22);
+            this.spriteTab.Controls.Add(this.button11);
+            this.spriteTab.Controls.Add(this.button16);
+            this.spriteTab.Controls.Add(this.label23);
+            this.spriteTab.Controls.Add(this.button17);
+            this.spriteTab.Controls.Add(this.label24);
+            this.spriteTab.Controls.Add(this.button18);
+            this.spriteTab.Controls.Add(this.label25);
+            this.spriteTab.Location = new System.Drawing.Point(2046, 54);
+            this.spriteTab.Name = "spriteTab";
+            this.spriteTab.Size = new System.Drawing.Size(593, 384);
+            this.spriteTab.TabIndex = 19;
             // 
-            // panel12
+            // label19
             // 
-            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.panel12.Location = new System.Drawing.Point(5, 5);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(140, 140);
-            this.panel12.TabIndex = 16;
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.LightCoral;
+            this.label19.Location = new System.Drawing.Point(27, 343);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(157, 13);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "Texture is greater than 512x512";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.LightCoral;
+            this.label20.Location = new System.Drawing.Point(27, 330);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(50, 13);
+            this.label20.TabIndex = 17;
+            this.label20.Text = "Warning!";
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel14.Controls.Add(this.panel15);
+            this.panel14.Location = new System.Drawing.Point(25, 174);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(150, 150);
+            this.panel14.TabIndex = 15;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.panel15.Location = new System.Drawing.Point(5, 5);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(140, 140);
+            this.panel15.TabIndex = 16;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel16.Controls.Add(this.textBox7);
+            this.panel16.Location = new System.Drawing.Point(179, 105);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(293, 23);
+            this.panel16.TabIndex = 13;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.ForeColor = System.Drawing.Color.White;
+            this.textBox7.Location = new System.Drawing.Point(6, 5);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(282, 13);
+            this.textBox7.TabIndex = 0;
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel17.Controls.Add(this.textBox8);
+            this.panel17.Location = new System.Drawing.Point(179, 76);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(293, 23);
+            this.panel17.TabIndex = 13;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.ForeColor = System.Drawing.Color.White;
+            this.textBox8.Location = new System.Drawing.Point(6, 5);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(282, 13);
+            this.textBox8.TabIndex = 0;
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.panel18.Controls.Add(this.textBox9);
+            this.panel18.Location = new System.Drawing.Point(179, 47);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(293, 23);
+            this.panel18.TabIndex = 12;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.ForeColor = System.Drawing.Color.White;
+            this.textBox9.Location = new System.Drawing.Point(6, 5);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(282, 13);
+            this.textBox9.TabIndex = 0;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(22, 158);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(80, 13);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "Image Preview:";
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(478, 339);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(103, 31);
+            this.button11.TabIndex = 9;
+            this.button11.Text = "Create Sprite";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(478, 104);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(93, 23);
+            this.button16.TabIndex = 8;
+            this.button16.Text = "Browse";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(22, 106);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(104, 13);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "Sprite Output Folder:";
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(478, 76);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(93, 23);
+            this.button17.TabIndex = 5;
+            this.button17.Text = "Browse";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(22, 80);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(83, 13);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Sprite Input File:";
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(478, 47);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(93, 23);
+            this.button18.TabIndex = 2;
+            this.button18.Text = "Browse";
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(22, 52);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(91, 13);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Spritemaker Path:";
             // 
             // PanelGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(59)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(2041, 450);
+            this.ClientSize = new System.Drawing.Size(2703, 450);
+            this.Controls.Add(this.spriteTab);
             this.Controls.Add(this.wadTab);
             this.Controls.Add(this.studioTab);
             this.Controls.Add(this.decTab);
@@ -1073,6 +1313,15 @@
             this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            this.spriteTab.ResumeLayout(false);
+            this.spriteTab.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1160,6 +1409,27 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Panel spriteTab;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Label label25;
     }
 }
 

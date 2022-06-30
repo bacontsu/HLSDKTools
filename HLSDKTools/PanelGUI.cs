@@ -119,6 +119,7 @@ namespace HLSDKTools
 
             studioTab.Location = decTab.Location;
             wadTab.Location = decTab.Location;
+            spriteTab.Location = decTab.Location;
 
             // show only selected panel
             switch (selectedTab)
@@ -126,30 +127,37 @@ namespace HLSDKTools
                 case 0:
                     {
                         decTab.Show();
-                        //decTab.BringToFront();
+                        
                         studioTab.Hide();
                         wadTab.Hide();
+                        spriteTab.Hide();
                         break;
                     }
                 case 1:
                     {
                         studioTab.Show();
-                        //studioTab.BringToFront();
+                        
                         decTab.Hide();
                         wadTab.Hide();
+                        spriteTab.Hide();
                         break;
                     }
                 case 2:
                     {
                         wadTab.Show();
+
                         decTab.Hide();
                         studioTab.Hide();
+                        spriteTab.Hide();
                         break;
                     }
-                default:
+                case 3:
                     {
-                       // studioTab.Hide();
-                        //decTab.Hide();
+                        spriteTab.Show();
+
+                        decTab.Hide();
+                        studioTab.Hide();
+                        wadTab.Hide();
                         break;
                     }
             }
